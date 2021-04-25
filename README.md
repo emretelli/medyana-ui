@@ -3,6 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 Medyana UI is implemented for showing patients from polyclinics and editing or deleting those patients datas
 Filtering for polyclinics , doctors and patients is available
+Dockerfile added
 
 ## Development server
 
