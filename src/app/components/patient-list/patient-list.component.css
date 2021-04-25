@@ -1,0 +1,7 @@
+.table th, .table td{
+    vertical-align: middle;
+}
+.mat-form-field:not(:first-child){
+    margin-left : 32px;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,56 @@
+<mat-form-field class="example-full-width">
+  <mat-label>Poliklinik Ara</mat-label>
+  <input [(ngModel)]="filterText.polyclinicCode" matInput>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Doktor Ara</mat-label>
+  <input [(ngModel)]="filterText.doctorNameSurname" matInput>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Hasta Ara</mat-label>
+  <input [(ngModel)]="filterText.patientNameSurname" matInput>
+</mat-form-field>
+
+<table class="table table-hover" *ngIf="patients && patients.length > 0">
+    <thead>
+      <tr>
+        <th hidden scope="col">Id</th>
+        <th scope="col">Poliklinik Kodu</th>
+        <th scope="col">Doktor Sicil Kod</th>
+        <th scope="col">Doktor Adı - Soyadı</th>
+        <th scope="col">Hasta Adı - Soyadı</th>
+        <!-- <th scope="col">Doğum Tarihi</th>
+        <th scope="col">Cinsiyeti</th>
+        <th scope="col">Kimlik No</th>
+        <th scope="col">Telefon No</th>
+        <th scope="col">Ziyaret Tarihi</th>
+        <th scope="col">Bir Sonraki Ziyaret Tarihi</th>
+        <th scope="col">Doktor Notu</th> -->
+        <th scope="col">Detay</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let patient of patients | patientFilter : {polyclinicCode : filterText.polyclinicCode , doctorNameSurname : filterText.doctorNameSurname , patientNameSurname : filterText.patientNameSurname} ">
+        <th hidden scope="row">1</th>
+        <td>{{patient.polyclinicCode}}</td>
+        <td>{{patient.doctorRegistryCode}}</td>
+        <td>{{patient.doctorName}} - {{patient.doctorSurname}}</td>
+        <td>{{patient.name}} - {{patient.surname}}</td>
+        <!-- <td>{{patient.dateOfBirth | date: 'dd-MM-yyyy'}}</td>
+        <td>{{patient.gender}}</td>
+        <td>{{patient.citizenshipNumber}}</td>
+        <td>{{patient.telephoneNumber}}</td>
+        <td>{{patient.visitationDate | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+        <td>{{patient.nextVisitationDate | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+        <td>{{patient.doctorNote}}</td> -->
+        <td>
+            <button mat-icon-button (click)="showDetails(patient)">
+                <mat-icon>search</mat-icon>
+              </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,75 @@
+<div class="container">
+    <h2 mat-dialog-title>{{data.patient.polyclinicCode}}</h2>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+        <mat-dialog-content>
+    
+            <mat-form-field hidden>
+                <input matInput formControlName="id" placeholder="Id">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formControlName="polyclinicCode" placeholder="Poliklinik Kodu">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="number" formControlName="doctorRegistryCode" placeholder="Doktor Sicil Kodu">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput formControlName="doctorName" placeholder="Doktor Adı">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput formControlName="doctorSurname" placeholder="Doktor Soyadı">
+            </mat-form-field>
+    
+    
+            <mat-form-field>
+                <input matInput formControlName="name" placeholder="Adı">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput formControlName="surname" placeholder="Soyadı">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="datetime-local" formControlName="dateOfBirth" placeholder="Doğum Tarihi">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-select placeholder="Cinsiyeti" formControlName="gender">
+                    <mat-option *ngFor="let genderType of genderTypes" [value]="genderType.key">{{genderType.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="number" formControlName="citizenshipNumber" placeholder="TC Kimlik No">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="tel" formControlName="telephoneNumber" placeholder="Telefon No">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="datetime-local" formControlName="visitationDate" placeholder="Ziyaret Tarihi">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <input matInput type="datetime-local" formControlName="nextVisitationDate"
+                    placeholder="Bir Sonraki Ziyaret Tarihi">
+            </mat-form-field>
+        </mat-dialog-content>
+    
+        <mat-dialog-actions align="end">
+            <button mat-button (click)="edit()" *ngIf="!isEditMode">Düzenle</button>
+            <button mat-button type="submit" [disabled]="!formGroup.valid" *ngIf="isEditMode">Kaydet</button>
+            <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+            <button mat-button (click)="delete()">Sil</button>
+            <button mat-button mat-dialog-close>İptal</button>
+        
+        </mat-dialog-actions>
+    </form>
+</div>
+
+
